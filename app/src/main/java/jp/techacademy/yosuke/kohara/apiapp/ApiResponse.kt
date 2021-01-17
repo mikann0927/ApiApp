@@ -22,7 +22,7 @@ data class Shop(@SerializedName("coupon_urls") val couponUrls: CouponUrls) : Ser
     @SerializedName("name")
     val name: String = ""
     @SerializedName("address")
-    var address: String = ""
+    val address: String = ""
 
 
 data class CouponUrls(
@@ -33,7 +33,8 @@ data class CouponUrls(
 }
 
 //課題対応
-data class favoriteshop(@SerializedName("coupon_urls") val couponUrls: CouponUrls) : Serializable{
+/*
+data class shop2(@SerializedName("coupon_urls") val couponUrls: CouponUrls) : Serializable{
     @SerializedName("id")
     val id: String = ""
     @SerializedName("logo_image")
@@ -50,3 +51,4 @@ data class CouponUrls(
     @SerializedName("sp")
     var sp: String)
 }
+*/

@@ -46,9 +46,9 @@ class WebViewActivity: AppCompatActivity() {
     //課題対応
     companion object {
         private const val KEY_URL = "key_url"
-        fun start(activity: Activity, shop:Shop) {
+        fun start(activity: Activity, shop2: FavoriteShop) {
             activity.startActivity(Intent(activity, WebViewActivity::class.java)
-                .putExtra("shop",shop))
+                .putExtra("shop",shop2))
 
         }
     }

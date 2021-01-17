@@ -31,12 +31,20 @@ abstract class MainActivity : AppCompatActivity(), FragmentCallback {
     }
 
     //課題対応
-    override fun onClickItem(shop: Shop) {
-        WebViewActivity.start(this,shop)
-    }
+    override fun onClickItem(shop2: FavoriteShop) {
+        onClickItem(FavoriteShop().apply {
+//            id = shop2.id
+//            name = shop2.name
+            //課題対応　追記2　address2
+//            address = shop2.address
+        })
+            (viewPagerAdapter.fragments[VIEW_PAGER_POSITION_FAVORITE] as FavoriteFragment).updateData()
+        }
+
     //課題対応
-    override fun onClickItem2(favoriteshop: FavoriteShop) {
-        WebViewActivity.start(this,favoriteshop)
+    override fun onClickItem2(shop2: FavoriteShop) {
+
+        WebViewActivity.start(this,shop2)
     }
 
     override fun onAddFavorite(shop: Shop) { // Favoriteに追加するときのメソッド(Fragment -> Activity へ通知する)

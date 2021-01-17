@@ -11,5 +11,6 @@ interface FragmentCallback {
 
     // Itemを押したときの処理
     //課題対応
-    fun onClickItem2(favoriteshop: FavoriteShop)
+    fun onClickItem2(shop2: FavoriteShop)
+    fun onClickItem(shop2: FavoriteShop)
 }

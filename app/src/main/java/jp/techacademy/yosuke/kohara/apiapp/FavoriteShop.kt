@@ -1,5 +1,6 @@
 package jp.techacademy.yosuke.kohara.apiapp
 
+import com.google.gson.annotations.SerializedName
 import io.realm.Realm
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
@@ -13,7 +14,6 @@ open class FavoriteShop: RealmObject() {
 
     //課題対応　追記2　address
     var address: String = ""
-
 
 
     companion object {
