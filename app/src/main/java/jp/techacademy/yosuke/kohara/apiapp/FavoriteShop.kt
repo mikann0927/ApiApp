@@ -4,8 +4,9 @@ import com.google.gson.annotations.SerializedName
 import io.realm.Realm
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.io.Serializable
 
-open class FavoriteShop: RealmObject() {
+open class FavoriteShop: RealmObject(), Serializable {
     @PrimaryKey
     var id: String = ""
     var imageUrl: String = ""
