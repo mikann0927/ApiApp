@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
-abstract class MainActivity : AppCompatActivity(), FragmentCallback {
+class MainActivity : AppCompatActivity(), FragmentCallback {
 
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
 
@@ -30,16 +30,21 @@ abstract class MainActivity : AppCompatActivity(), FragmentCallback {
         }.attach()
     }
 
+    override fun onClickItem(shop: Shop) {
+        var shop2=FavoriteShop()
+        shop2.id = shop.id
+        shop2.name = shop.name
+        shop2.imageUrl = shop.logoImage
+        shop2.address = shop.address
+        shop2.url = if (shop.couponUrls.sp.isNotEmpty()) shop.couponUrls.sp else shop.couponUrls.pc
+        WebViewActivity.start(this,shop2)
+    }
+
     //課題対応
     override fun onClickItem(shop2: FavoriteShop) {
-        onClickItem(FavoriteShop().apply {
-//            id = shop2.id
-//            name = shop2.name
-            //課題対応　追記2　address2
-//            address = shop2.address
-        })
-            (viewPagerAdapter.fragments[VIEW_PAGER_POSITION_FAVORITE] as FavoriteFragment).updateData()
-        }
+        WebViewActivity.start(this,shop2)
+
+    }
 
     //課題対応
     override fun onClickItem2(shop2: FavoriteShop) {
