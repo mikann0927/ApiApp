@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setTitle( "下にスワイプで更新です" );
+
         // ViewPager2の初期化
         viewPager2.apply {
             adapter = viewPagerAdapter

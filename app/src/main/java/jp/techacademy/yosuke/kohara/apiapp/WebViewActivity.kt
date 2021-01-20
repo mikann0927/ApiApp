@@ -12,14 +12,12 @@ class WebViewActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
 
+        //課題対応　
         val shopid =intent.getStringExtra("id")
         val shopname =intent.getStringExtra("name")
         val shopaddress =intent.getStringExtra("address")
         val shoplogoimage =intent.getStringExtra("imageUrl")
         val shopurl =intent.getStringExtra("url")
-
-        Log.d("kotlintest",shopurl)
-
         webView.loadUrl(shopurl).toString()
 
 
@@ -36,15 +34,16 @@ class WebViewActivity: AppCompatActivity() {
                 imageUrl = shoplogoimage
                 url = shopurl
             })
-
             button2.setEnabled(false)
             button3.setEnabled(true)
+            textView.setText("追加しました")
         }
         button3.setOnClickListener {
             //削除の指示
             FavoriteShop.delete(shopid)
             button3.setEnabled(false)
             button2.setEnabled(true)
+            textView.setText("削除しました")
         }
     }
 
