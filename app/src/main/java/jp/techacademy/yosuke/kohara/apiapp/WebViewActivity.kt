@@ -2,24 +2,29 @@ package jp.techacademy.yosuke.kohara.apiapp
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
+
 
 class WebViewActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
-        webView.loadUrl(intent.getStringExtra(KEY_URL).toString())
-
-
-        //課題対応　追記3
-        supportActionBar!!.hide()
 
         val shopid =intent.getStringExtra("id")
         val shopname =intent.getStringExtra("name")
         val shopaddress =intent.getStringExtra("address")
         val shoplogoimage =intent.getStringExtra("imageUrl")
         val shopurl =intent.getStringExtra("url")
+
+        Log.d("kotlintest",shopurl)
+
+        webView.loadUrl(shopurl).toString()
+
+
+        //課題対応　追記3
+        supportActionBar!!.hide()
 
         button2.setOnClickListener {
             //追加の指示
@@ -45,11 +50,15 @@ class WebViewActivity: AppCompatActivity() {
 
     //課題対応
     companion object {
-        private const val KEY_URL = "key_url"
+    //    private const val KEY_URL = "key_url"
         fun start(activity: Activity, shop2: FavoriteShop) {
             activity.startActivity(Intent(activity, WebViewActivity::class.java)
-                .putExtra("shop",shop2))
-
+                .putExtra("id",shop2.id)
+                .putExtra("name",shop2.name)
+                .putExtra("address",shop2.address)
+                .putExtra("imageUrl",shop2.imageUrl)
+                .putExtra("url",shop2.url)
+                )
         }
     }
 }
